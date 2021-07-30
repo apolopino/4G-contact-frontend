@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
 export const AddContact = () => {
+	const { store, actions } = useContext(Context);
+
+	function save() {
+		let name = document.getElementById("name").value;
+		let email = document.getElementById("email").value;
+		let phone = document.getElementById("phone").value;
+		let address = document.getElementById("address").value;
+
+		let contact = {
+			full_name: name,
+			email: email,
+			phone: phone,
+			address: address,
+			agenda_slug: "apolo"
+		};
+		console.log(contact);
+		actions.newContact(contact);
+	}
+
 	return (
 		<div className="container">
 			<div>
@@ -9,21 +29,26 @@ export const AddContact = () => {
 				<form>
 					<div className="form-group">
 						<label>Full Name</label>
-						<input type="text" className="form-control" placeholder="Full Name" />
+						<input type="text" id="name" className="form-control" placeholder="Full Name" />
 					</div>
 					<div className="form-group">
 						<label>Email</label>
-						<input type="email" className="form-control" placeholder="Enter email" />
+						<input type="email" id="email" className="form-control" placeholder="Enter email" />
 					</div>
 					<div className="form-group">
 						<label>Phone</label>
-						<input type="phone" className="form-control" placeholder="Enter phone" />
+						<input type="phone" id="phone" className="form-control" placeholder="Enter phone" />
 					</div>
 					<div className="form-group">
 						<label>Address</label>
-						<input type="text" className="form-control" placeholder="Enter address" />
+						<input type="text" id="address" className="form-control" placeholder="Enter address" />
 					</div>
-					<button type="button" className="btn btn-primary form-control">
+					<button
+						onClick={() => {
+							save();
+						}}
+						type="button"
+						className="btn btn-primary form-control">
 						save
 					</button>
 					<Link className="mt-3 w-100 text-center" to="/">
