@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export const AddContact = () => {
 	const { store, actions } = useContext(Context);
+	// let history = useHistory();
 
 	function save() {
 		let name = document.getElementById("name").value;
@@ -18,8 +19,14 @@ export const AddContact = () => {
 			address: address,
 			agenda_slug: "apolo"
 		};
-		console.log(contact);
-		actions.newContact(contact);
+
+		if (name === "" || email === "" || phone === "" || address === "") {
+			alert("Falta informacion");
+		} else {
+			console.log(contact);
+			actions.newContact(contact);
+			// history.push("/index.html");
+		}
 	}
 
 	return (
