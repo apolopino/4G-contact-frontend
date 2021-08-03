@@ -20,7 +20,10 @@ const getState = ({ getStore, setStore }) => {
 				fetch(url + "agenda/apolo", OBJCONFIG)
 					.then(res => res.json())
 					.then(console.log("el GET se ha ejecutado"))
-					.then(data => setStore({ contacts: data.results }));
+					.then(data => {
+						setStore({ contacts: data.results });
+						console.log(data);
+					});
 			},
 
 			// Añadir un contacto
