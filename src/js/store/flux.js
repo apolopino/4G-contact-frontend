@@ -35,8 +35,11 @@ const getState = ({ getStore, setStore }) => {
 
 				fetch(url, OBJCONFIG)
 					.then(res => res.json())
-					.then(console.log("el POST se ha ejecutado"))
-					.then(data => console.log("la respuesta es", data));
+					.then(data => {
+						console.log("la respuesta es ", data);
+						// Ahora lo redirecciono al home de nuevo
+						window.location.pathname = "/";
+					});
 			}
 
 			// Eliminar un contacto
