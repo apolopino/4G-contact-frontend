@@ -16,6 +16,8 @@ export const Contacts = () => {
 		actions.getContacts();
 	}, []);
 
+	let nName = "Juanito";
+
 	return (
 		<div className="container">
 			<div>
@@ -27,7 +29,7 @@ export const Contacts = () => {
 				<div id="contacts" className="panel-collapse collapse show" aria-expanded="true">
 					<ul className="list-group pull-down" id="contact-list">
 						<ContactCard onDelete={() => setState({ showModal: true })} />
-						<ContactCard />
+						<ContactCard nombre={nName} />
 						<ContactCard />
 						<ContactCard />
 					</ul>
