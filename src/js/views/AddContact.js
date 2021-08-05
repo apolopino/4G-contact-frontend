@@ -25,6 +25,7 @@ export const AddContact = () => {
 		} else {
 			console.log(contact);
 			actions.newContact(contact);
+			// La forma para redireccionar es usar {loggedIn ? <Redirect to=“/dashboard” /> : <PublicHomePage />}
 			// history.push("/index.html");
 		}
 	}
