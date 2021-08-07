@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import { Link, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 
 export const AddContact = () => {
 	const { store, actions } = useContext(Context);
@@ -25,10 +25,13 @@ export const AddContact = () => {
 		} else {
 			console.log(contact);
 			actions.newContact(contact);
-			// La forma para redireccionar es usar {loggedIn ? <Redirect to=“/dashboard” /> : <PublicHomePage />}
-			// history.push("/index.html");
+			redirect();
 		}
 	}
+
+	const redirect = () => {
+		<Redirect to="/index.html" />;
+	};
 
 	return (
 		<div className="container">
